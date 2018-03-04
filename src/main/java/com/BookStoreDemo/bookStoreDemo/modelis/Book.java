@@ -9,7 +9,8 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String [] category;
+  //  private String [] category;
+    // sukurtsim nauja kategorija 
     private String title;
     private String years;
     private String isbn;
