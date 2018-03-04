@@ -9,8 +9,13 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-  //  private String [] category;
-    // sukurtsim nauja kategorija 
+
+    // sukurtsim nauja kategorija vienas su vienu
+
+    @OneToOne(cascade = {CascadeType.ALL})
+    private Category category;
+
+
     private String title;
     private String years;
     private String isbn;
@@ -24,7 +29,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(String[] category, String title, String isbn, double price, int count) {
+    public Book(Category category, String title, String isbn, double price, int count) {
         this.category = category;
         this.title = title;
         this.isbn = isbn;
@@ -32,7 +37,7 @@ public class Book {
         this.count = count;
     }
 
-    public Book(String[] category, String title, String isbn, double price, int count, Set<Author> authors) {
+    public Book(Category category, String title, String isbn, double price, int count, Set<Author> authors) {
         this.category = category;
         this.title = title;
         this.isbn = isbn;
@@ -41,7 +46,7 @@ public class Book {
         this.authors = authors;
     }
 
-    public Book(String[] category, String title, String years, String isbn, double price, String bookSummary, int count, Set<Author> authors) {
+    public Book(Category category, String title, String years, String isbn, double price, String bookSummary, int count, Set<Author> authors) {
         this.category = category;
         this.title = title;
         this.years = years;
@@ -60,11 +65,11 @@ public class Book {
         this.id = id;
     }
 
-    public String[] getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String[] category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
